@@ -1,0 +1,3 @@
+docker network create --driver bridge --subnet 172.18.0.0/16 --gateway 172.18.0.1 egi_net
+docker run --name olatdocker -it -d -p 8080:8080 --net egi_net --ip 172.18.0.10 egifadli/olatdocker:1
+docker run --name olatmysql -it -d -p 3306:3306 --net egi_net --ip 172.18.0.20 egifadli/olatmysql:3
