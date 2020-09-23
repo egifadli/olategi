@@ -1,0 +1,36 @@
+version: "2.4"
+
+services:
+    olatmysql:
+      container_name: olatmysql
+      image: egifadli/automationmysql:5
+      ports:
+          - 3306:3306
+      networks:
+        app_net:
+          ipv4_address: 172.19.0.2
+      command: /bin/bash
+      stdin_open: true
+      tty: true
+
+    olatdocker:
+      container_name: olatdocker
+      image: egifadli/automationolat:4
+      ports:
+          - 8080:8080
+      networks:
+        app_net:
+          ipv4_address: 172.19.0.3
+      environment:
+          - DB_HOST=172.19.0.2
+      stdin_open: true
+      tty: true
+
+networks:
+    app_net:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.19.0.0/16
+            gateway: 172.19.0.1
