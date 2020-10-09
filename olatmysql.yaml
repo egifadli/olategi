@@ -9,4 +9,6 @@ spec:
   - name: olatmysql
     image: egifadli/automationmysql:6
     command: ["mysqld"]
+    ports:
+    - containerPort: 3306
   restartPolicy: OnFailure
