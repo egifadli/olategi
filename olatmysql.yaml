@@ -11,4 +11,4 @@ spec:
     command: ["mysqld"]
     ports:
     - containerPort: 3306
-  restartPolicy: OnFailure
+  restartPolicy: OnFailure 
