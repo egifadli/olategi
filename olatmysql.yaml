@@ -8,5 +8,5 @@ spec:
   containers:
   - name: olatmysql
     image: egifadli/automationmysql:6
-    command: ["/bin/bash"]
+    command: ["mysqld"]
   restartPolicy: OnFailure
