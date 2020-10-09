@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels:
+    app: olatmysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: olatmysql
+  template:
+    metadata:
+      labels:
+        app: olatmysql
+    spec:
+      containers:
+      - name: olat-mysql
+        image: egifadli/automationmysql:6
+        command: ["mysqld"]
+        ports:
+        - containerPort: 3306
+      restartPolicy: OnFailure 
