@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olat-deployment
+  labels:
+    app: olatdocker
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: olatdocker
+  template:
+    metadata:
+      labels:
+        app: olatdocker
+    spec:
+      containers:
+      - name: olat-docker
+        image: egifadli/automationolat:4
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: "10.106.15.129"
